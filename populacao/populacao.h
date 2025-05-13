@@ -3,7 +3,7 @@
 
 #include "individuo/individuo.h"
 
-#define TAMANHO_POPULACAO 10
+#define TAMANHO_POPULACAO 100
 
 typedef struct {
     Individuo individuos[TAMANHO_POPULACAO];

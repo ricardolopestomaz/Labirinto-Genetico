@@ -3,6 +3,7 @@
 #include "simulacao.h"
 #include "../mapa/mapa.h"
 #include "../populacao/individuo/individuo.h"
+#include "../fitness/fitness.h"
 
 void simularIndividuo(Individuo *ind, int mapa[LINHA][COLUNA]){
     int x = 0, y = 1; // INICIO
@@ -63,9 +64,10 @@ void simularIndividuo(Individuo *ind, int mapa[LINHA][COLUNA]){
     }
 
     ind->passos = passos;
-
-    // ind->fitness = calcularFitness(x, y);
-
+    ind->fitness = calcularFitness(ind, 8, 19,x, y);
+    printf("\nFitness: %d\n", ind->fitness);
+    printf("Pocicao: [%d][%d]", x, y);
+    printf("Passos: %d", ind-> passos);
 }
 
 

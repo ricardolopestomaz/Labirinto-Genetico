@@ -7,11 +7,9 @@ typedef struct {
     char cromossomo[TAMANHO_CROMOSSOMO];
     int passos;
     int concluido;
-    float fitness;
+    int fitness;
 } Individuo;
 
 void gerarIndividuo(Individuo *ind);
-
-void calcularFitness(Individuo *ind, int mapa[10][20]);
 
 #endif
