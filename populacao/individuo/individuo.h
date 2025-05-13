@@ -1,7 +1,7 @@
 #ifndef INDIVIDUO_H
 #define INDIVIDUO_H
 
-#define TAMANHO_CROMOSSOMO 82
+#define TAMANHO_CROMOSSOMO 100
 
 typedef struct {
     char cromossomo[TAMANHO_CROMOSSOMO];

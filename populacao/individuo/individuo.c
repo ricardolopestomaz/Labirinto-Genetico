@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <time.h>
 #include "individuo.h"
 
@@ -8,10 +9,10 @@ void gerarIndividuo(Individuo *ind){
     for (int i = 0; i < TAMANHO_CROMOSSOMO; i++){
         int r = rand() % 4;
         ind -> cromossomo[i] = movimentos[r];
-        printf("Movimentos [%d]: %c\n", i, ind -> cromossomo[i]);
+        printf("Movimentos [%d]: %c\n", i + 1, ind -> cromossomo[i]);
     }
     ind -> passos = 0;
-    ind -> concluido = 0;
+    ind -> concluido = false;
     ind -> fitness = 0;
     
 }

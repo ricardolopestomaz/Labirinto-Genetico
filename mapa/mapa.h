@@ -5,6 +5,10 @@
 #define PAREDE 1
 #define ENTRADA 2
 #define SAIDA 3
+#define LINHA 10
+#define COLUNA 20
+
+extern int mapa[LINHA][COLUNA];
 
 void imprimirMapa();
 
