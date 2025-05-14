@@ -3,6 +3,15 @@
 
 #include "../populacao/individuo/individuo.h"
 
-int calcularFitness(Individuo *ind, int xObjetivo, int yObjetivo, int xFinal, int yFInal);
+typedef struct NoArvore {
+    Individuo *individuo;
+    struct NoArvore *esquerda;
+    struct NoArvore *direita;
+} NoArvore;
+
+int calcularFitness(Individuo *ind, int xObjetivo, int yObjetivo, int xFinal, int yFInal, NoArvore **raiz);
+NoArvore* insertAF(NoArvore *raiz, Individuo *ind);
+void percorrerFitness(NoArvore *raiz);
+void melhoresFitness(NoArvore *raiz);
 
 #endif

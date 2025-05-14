@@ -5,7 +5,7 @@
 #include "../populacao/individuo/individuo.h"
 #include "../fitness/fitness.h"
 
-void simularIndividuo(Individuo *ind, int mapa[LINHA][COLUNA]){
+void simularIndividuo(Individuo *ind, int mapa[LINHA][COLUNA], NoArvore **raiz){
     int x = 0, y = 1; // INICIO
     int passos = 0;
 
@@ -16,40 +16,24 @@ void simularIndividuo(Individuo *ind, int mapa[LINHA][COLUNA]){
                 // VERIFICA SE NÃO É PAREDE
                 x--;
                 passos++;
-                printf("ANDOU\n");
-            }
-            else{
-                printf("PAREDE\n");
             }
         }
         else if(ind->cromossomo[i] == 'B'){
             if(x < 9 && mapa[x+1][y] != 1){
                 x++;
                 passos++;
-                printf("ANDOU\n");
-            }
-            else{
-                printf("PAREDE\n");
             }
         }
         else if(ind->cromossomo[i] == 'E'){
             if(y > 0 && mapa[x][y-1] != 1){
                 y--;
                 passos++;
-                printf("ANDOU\n");
-            }
-            else{
-                printf("PAREDE\n");
             }
         }
         else if(ind->cromossomo[i] == 'D'){
             if(y < 19 && mapa[x][y+1] != 1){
                 y++;
                 passos++;
-                printf("ANDOU\n");
-            }
-            else{
-                printf("PAREDE\n");
             }
         }
 
@@ -64,15 +48,15 @@ void simularIndividuo(Individuo *ind, int mapa[LINHA][COLUNA]){
     }
 
     ind->passos = passos;
-    ind->fitness = calcularFitness(ind, 8, 19,x, y);
-    printf("\nFitness: %d\n", ind->fitness);
-    printf("Pocicao: [%d][%d]", x, y);
-    printf("Passos: %d", ind-> passos);
+    ind->fitness = calcularFitness(ind, 8, 19,x, y, raiz);
 }
 
 
 void simularPopulacao(Populacao *pop, int mapa[LINHA][COLUNA]){
+    NoArvore *raiz = NULL;
     for (int i = 0; i < TAMANHO_POPULACAO; i++){
-        simularIndividuo(&pop->individuos[i], mapa);
+        simularIndividuo(&pop->individuos[i], mapa, &raiz);
     }
+    printf("Fitness dos individuos\n");
+    melhoresFitness(raiz);
 }
